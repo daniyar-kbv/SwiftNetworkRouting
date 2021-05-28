@@ -136,6 +136,71 @@ router.request(.sendTestData(message: "Hello world!"), returning: TestResponse.s
 }
 ```
 
+### Uploading files
+
+#### Using  `UploadingFile`
+
+To upload files you can use the `UploadingFile` class instance.
+
+```swift
+UploadingFile(data: Data, fileName: String, mimeType: String?)
+```
+
+You have to set `contentType` to `.json` and use the `UploadingFile` instance in `bodyParameters`.
+Example:
+
+```swift
+var bodyParameters: [String: Any]? {
+    switch self {
+    case .sendTestData(let message):
+        return [
+            "image": UploadingFile(
+                data: UIImagePNGRepresentation(UIImage(named: "exampleImage")!)!,
+                fileName: "exampleImage.png",
+                mimeType: "image/png")
+        ]
+    default:
+        return nil
+    }
+}
+
+var contentType: ContentType {
+    switch self {
+    case .sendTestData:
+        return .multiPartFormData
+    default:
+        return .json
+    }
+}
+```
+
+#### Using `URL`
+
+You can also use `URL` instance with URL to the file, but you alse have to set `contentType` to `.json` .
+Example:
+
+```swift
+var bodyParameters: [String: Any]? {
+    switch self {
+    case .sendTestData:
+        return [
+            "image": URL(fileURLWithPath: Bundle.main.path(forResource: "exampleImage", ofType: "png")!)
+        ]
+    default:
+        return nil
+    }
+}
+
+var contentType: ContentType {
+    switch self {
+    case .sendTestData:
+        return .multiPartFormData
+    default:
+        return .json
+    }
+}
+```
+
 ### Logger customization
 
 By the default logger console output look like this:

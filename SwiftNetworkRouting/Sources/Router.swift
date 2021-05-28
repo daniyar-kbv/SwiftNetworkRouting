@@ -61,11 +61,11 @@ public class Router<EP: EndPoint> {
     }
 
     func dataCompletion<T>(response: AFDataResponse<Data>, completion: @escaping(_ error:String?,_ module: T?)->()) where T : Codable {
-        logger.logResponse(response: response.response, data: response.data)
         guard let res = response.response else {
             completion(response.error?.localizedDescription, nil)
             return
         }
+        logger.logResponse(response: res, data: response.data)
         let result = errorHandler.handleNetworkResponse(res)
         switch result {
         case .success:
