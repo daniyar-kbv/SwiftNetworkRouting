@@ -16,8 +16,8 @@ The SwiftNetworkRouting suits you if you want to build the network layer for you
 SwiftNetworkRouting is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-```ruby
-pod 'SwiftNetworkRouting'
+```ruby 
+pod 'SwiftNetworkRouting', '~> 0.1.1'
 ```
 
 ## Usage
@@ -157,7 +157,8 @@ var bodyParameters: [String: Any]? {
             "image": UploadingFile(
                 data: UIImagePNGRepresentation(UIImage(named: "exampleImage")!)!,
                 fileName: "exampleImage.png",
-                mimeType: "image/png")
+                mimeType: "image/png"
+            )
         ]
     default:
         return nil
