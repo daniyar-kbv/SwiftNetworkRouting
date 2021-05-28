@@ -41,7 +41,7 @@ public protocol EndPoint {
     var additionalHeaders: [String: String]? {get}
     
     /// The type of request's body (JSON, Multipart Form Data)
-    var contentType: ContentType? {get}
+    var contentType: ContentType {get}
 }
 
 public extension EndPoint {

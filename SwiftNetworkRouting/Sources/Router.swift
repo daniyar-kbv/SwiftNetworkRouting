@@ -57,8 +57,6 @@ public class Router<EP: EndPoint> {
                     completion(error, response)
                 }
             })
-        default:
-            break
         }
     }
 
