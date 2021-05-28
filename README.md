@@ -96,12 +96,12 @@ enum MyEndPoint: EndPoint {
         }
     }
     
-    var contentType: ContentType? {
+    var contentType: ContentType {
         switch self {
         case .sendTestData:
             return .multiPartFormData
         default:
-            return nil
+            return .json
         }
     }
 }
