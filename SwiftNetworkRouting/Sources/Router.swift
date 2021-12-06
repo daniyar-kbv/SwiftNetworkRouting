@@ -31,7 +31,7 @@ public class Router<EP: EndPoint> {
         }
     }
     
-    /// The `request` methods sends the HTTP request according to `EndPoin`t type specified in parameters.
+    /// The `request` methods sends the HTTP request according to `EndPoint` type specified in parameters.
     /// You have to specify returning class so the compiler which generic class is used for decoding.
     /// Completion handler returns the error string and returning class instance.
     public func request<T>(_ route: EP, returning: T.Type, completion: @escaping(_ error: String?,_ module: T?)->()) where T : Codable {
@@ -85,3 +85,4 @@ public class Router<EP: EndPoint> {
         }
     }
 }
+

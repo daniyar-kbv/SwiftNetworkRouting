@@ -15,7 +15,7 @@ public class UploadingFile {
     public var data: Data
     
     /// The file name including the file extension.
-    public var fileName: String
+    public var fileName: String 
     
     /// The MIME type is a label used to identify a type of data.
     /// The field is optional.
@@ -28,3 +28,4 @@ public class UploadingFile {
         self.mimeType = mimeType
     }
 }
+
